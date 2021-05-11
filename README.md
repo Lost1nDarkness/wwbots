@@ -2,7 +2,9 @@
 My Wizard101 bots made with WizWalker
 
 ## Usage
-Run the following commands (in the source root) to run a bot from source:
+Most users should probably download binaries from [releases](https://github.com/PeechezNCreem/wwbots/releases).
+
+To run a bot from source, run the following commands in the source root:
 - Install common requirements: `pip install -r requirements.txt`
 - Install bot requirements: `pip install -r [botname]/requirements.txt`
 - Run bot: `py -m [botname]`
