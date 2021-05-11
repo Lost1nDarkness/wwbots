@@ -66,9 +66,9 @@ class Bot:
 
     async def wait_for_zone_change(self):
         while not await self.client.is_loading():
-            continue
+            await asyncio.sleep(0.1)
         while await self.client.is_loading():
-            continue
+            await asyncio.sleep(0.1)
 
 
 with Bot() as bot:
