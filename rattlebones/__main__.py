@@ -7,7 +7,7 @@ import asyncio
 import signal
 
 from wizwalker import WizWalker
-from wizwalker.combat.handler import CombatHandler
+from wizwalker.combat import CombatHandler
 
 
 # https://github.com/PeechezNCreem/peechutils
@@ -28,7 +28,7 @@ class InterruptBlocker:
 class AOESpammer(CombatHandler):
     async def handle_round(self):
         if not (cards := await self.get_cards()):
-            raise RuntimeError("No cards found")
+            raise RuntimeError("Out of cards")
         await cards[0].cast(None)
 
 
@@ -63,12 +63,6 @@ class Bot:
             # Exit tower
             await self.client.goto(0, -1250)
             await self.wait_for_zone_change()
-
-    async def wait_for_zone_change(self):
-        while not await self.client.is_loading():
-            await asyncio.sleep(0.1)
-        while await self.client.is_loading():
-            await asyncio.sleep(0.1)
 
 
 with Bot() as bot:
